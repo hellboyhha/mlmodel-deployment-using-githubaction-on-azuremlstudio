@@ -44,5 +44,5 @@ jobs:
         run: export AZ_SUBSCRIPTION_ID=${{ secrets.AZ_SUBSCRIPTION_ID }} AZ_RESOURCE_GP_NAME=${{ secrets.AZ_RESOURCE_GP_NAME }} AZ_ML_WORKSPACE_NAME=${{ secrets.AZ_ML_WORKSPACE_NAME }}
 
       - name: Execute Python Deployment Script
-        run: echo ${{ env.python_model_deployment_script_path }}
+        run: python env.python_model_deployment_script_path
         
