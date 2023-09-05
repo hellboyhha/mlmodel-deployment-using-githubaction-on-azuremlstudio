@@ -11,7 +11,7 @@ on:
 
 env:
   python_version: '3.10'
-  python_deployment_script_path: ${{ GITHUB_WORKSPACE }}/print_env.py
+  python_model_deployment_script_path: ${{ GITHUB_WORKSPACE }}/print_env.py
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -44,5 +44,5 @@ jobs:
         run: export AZ_SUBSCRIPTION_ID=${{ secrets.AZ_SUBSCRIPTION_ID }} AZ_RESOURCE_GP_NAME=${{ secrets.AZ_RESOURCE_GP_NAME }} AZ_ML_WORKSPACE_NAME=${{ secrets.AZ_ML_WORKSPACE_NAME }}
 
       - name: Execute Python Deployment Script
-        run: echo ${{ env.python_deployment_script_path }}
+        run: echo ${{ env.python_model_deployment_script_path }}
         
