@@ -11,8 +11,10 @@ on:
 
 env:
   python_version: '3.10'
-  python_model_deployment_script_path: "${{ GITHUB.WORKSPACE }}/model-deployment-azure.py"
-
+  python_requirements_file: 'requirements.txt'
+  # python_model_deployment_script_path: "${{ GITHUB.WORKSPACE }}/model-deployment-azure.py"
+  python_model_deployment_script: 'model-deployment-azure.py'
+  
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   CD:
@@ -29,7 +31,9 @@ jobs:
         with:
           python-version: ${{ env.python_version }}
 
-      # Az-cli installation in runner
+      - name: Python Dependencies Installation
+        run: pip install -r ${{ env.python_requirements_file }}
+        
       - name: Azure CLI Installation
         run: |
           # Azure CLI installation through a script maintained by the Azure CLI team
@@ -43,5 +47,5 @@ jobs:
       - name: Azure ML Workspace Configuration Setup & Execute Python Deployment Script
         run: |
           export AZ_SUBSCRIPTION_ID=${{ secrets.AZ_SUBSCRIPTION_ID }} AZ_RESOURCE_GP_NAME=${{ secrets.AZ_RESOURCE_GP_NAME }} AZ_ML_WORKSPACE_NAME=${{ secrets.AZ_ML_WORKSPACE_NAME }}
-          python ${{ env.python_model_deployment_script_path }}
+          python ${{ env.python_model_deployment_script }}
         
