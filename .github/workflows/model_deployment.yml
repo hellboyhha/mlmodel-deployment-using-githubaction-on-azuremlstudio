@@ -23,5 +23,7 @@ jobs:
       # Az-cli installation in runner
       - name: Azure CLI Installation
         run: |
+          # Azure CLI installation through a script maintained by the Azure CLI team
           curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+          # verify installation
           sudo az --version
