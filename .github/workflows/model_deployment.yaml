@@ -27,3 +27,6 @@ jobs:
           curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
           # verify installation
           sudo az --version
+
+      - name: Azure CLI Login using service principal
+        run: az login --service-principal -u {{ secrets.AZ_APP_ID }} -p {{ secrets.AZ_APP_SECRET }} --tenant {{ secrets.AZ_TENANT_ID }}
