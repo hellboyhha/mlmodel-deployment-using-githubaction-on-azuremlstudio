@@ -29,4 +29,4 @@ jobs:
           sudo az --version
 
       - name: Azure CLI Login using service principal
-        run: az login --service-principal -u {{ secrets.AZ_APP_ID }} -p {{ secrets.AZ_APP_SECRET }} --tenant {{ secrets.AZ_TENANT_ID }}
+        run: az login --service-principal -u ${{ secrets.AZ_APP_ID }} -p ${{ secrets.AZ_APP_SECRET }} --tenant ${{ secrets.AZ_TENANT_ID }}
