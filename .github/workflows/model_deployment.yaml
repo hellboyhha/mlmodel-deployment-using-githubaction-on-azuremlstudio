@@ -10,11 +10,8 @@ on:
   workflow_dispatch:
 
 env:
-  AZ_SUBSCRIPTION_ID: ""
-  AZ_RESOURCE_GP_NAME: ""
-  AZ_ML_WORKSPACE_NAME: ""
   python_version: '3.10'
-  python_model_deployment_script_path: "${{ GITHUB.WORKSPACE }}/print_env.py"
+  python_model_deployment_script_path: "${{ GITHUB.WORKSPACE }}/model-deployment-azure.py"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -40,8 +37,8 @@ jobs:
           # verify installation
           sudo az --version
 
-#      - name: Azure CLI Login using service principal
-#        run: az login --service-principal -u ${{ secrets.AZ_APP_ID }} -p ${{ secrets.AZ_APP_SECRET }} --tenant ${{ secrets.AZ_TENANT_ID }}
+      - name: Azure CLI Login using service principal
+        run: az login --service-principal -u ${{ secrets.AZ_APP_ID }} -p ${{ secrets.AZ_APP_SECRET }} --tenant ${{ secrets.AZ_TENANT_ID }}
 
       - name: Azure ML Workspace Configuration Setup & Execute Python Deployment Script
         run: |
