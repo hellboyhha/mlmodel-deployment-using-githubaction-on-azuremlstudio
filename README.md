@@ -12,15 +12,15 @@ Azure Machine Learning Studio is a GUI-based integrated development environment 
 [Please see this azure official documentation for more information.](https://learn.microsoft.com/en-us/azure/machine-learning/overview-what-is-azure-machine-learning?view=azureml-api-2)
 
 ## Directory Structure:
-#### Folder [environment]
+#### Folder [model-requirements/environment]
 - includes conda environment yaml file to install dependencies to run ml model
-#### Folder [model]
+#### Folder [model-requirements/model]
 - includes trained model
-#### Folder [onlinescoring]
+#### Folder [model-requirements/onlinescoring]
 - python file that contains the logic about how to run the model and read the input data. [please see this for more information.](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-batch-scoring-script?view=azureml-api-2&tabs=cli#understanding-the-scoring-script)
 #### Folder [.github/workflows]
 - includes model_deployment.yaml: yaml file for github action automation
-#### File [sample-request.json]
+#### File [model-requirements/sample-request.json]
 - test input data to score by using model
 #### File [requirements.txt]
 - python dependency to run deployment script from your local or GitHub runner
