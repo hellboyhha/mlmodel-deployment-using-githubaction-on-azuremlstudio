@@ -10,7 +10,8 @@ from azure.ai.ml.entities import (
 )
 from azure.identity import DefaultAzureCredential
 
-# details of Azure Machine Learning workspace
+# configure Azure Machine Learning Workspace
+# retrieve values from linux variables
 subscription_id = os.environ['AZ_SUBSCRIPTION_ID']
 resource_group = os.environ['AZ_RESOURCE_GP_NAME']
 workspace_name = os.environ['AZ_ML_WORKSPACE_NAME']
@@ -33,10 +34,12 @@ endpoint = ManagedOnlineEndpoint(
 
 ## deployment configuration
 model = Model(path="model-requirements/model/sklearn_regression_model.pkl")
+# setup conda dependencies and required container image
 env = Environment(
     conda_file="model-requirements/environment/conda.yaml",
     image="mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:latest",
 )
+
 
 model_deployment = ManagedOnlineDeployment(
     name=deployment_name,
@@ -54,7 +57,7 @@ model_deployment = ManagedOnlineDeployment(
 ml_client.online_endpoints.begin_create_or_update(endpoint).result()
 ml_client.online_deployments.begin_create_or_update(model_deployment).result()
 
-# # demo model deployment takes 100 traffic
+## demo model deployment takes 100 traffic
 endpoint.traffic = {deployment_name: 100}
 ml_client.online_endpoints.begin_create_or_update(endpoint).result()
 
@@ -62,7 +65,7 @@ ml_client.online_endpoints.begin_create_or_update(endpoint).result()
 azure_deployment_verify = ml_client.online_endpoints.get(name=endpoint_name)
 print(f"\nAzure Deployment Info: \n{azure_deployment_verify}\n")
 
-# test the blue deployment with some sample data
+# test the deployment with some sample data
 azure_deployment_scoring = ml_client.online_endpoints.invoke(
     endpoint_name=endpoint_name,
     deployment_name=deployment_name,
@@ -70,7 +73,7 @@ azure_deployment_scoring = ml_client.online_endpoints.invoke(
 )
 print(f"Scoring Result: \n{azure_deployment_scoring}\n")
 
-# # check the status of the online deployment
+## check logs of the online deployment after testing 
 azure_deployment_logs =ml_client.online_deployments.get_logs(
     name=deployment_name, endpoint_name=endpoint_name, lines=50
 )
