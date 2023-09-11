@@ -8,7 +8,7 @@
 - [Azure Machine Learning Workspace](https://learn.microsoft.com/en-us/azure/machine-learning/quickstart-create-resources?view=azureml-api-2)
 
 ## What is Azure ML Studio?
-Azure Machine Learning Studio is a GUI-based integrated development environment for constructing and operationalizing Machine Learning workflow on Azure. It's a cloud service for accelerating and managing the machine learning project lifecycle.
+Azure Machine Learning Studio is a GUI-based integrated development environment for constructing and operationalizing Machine Learning workflow on Azure. It's a cloud service for accelerating and managing the machine learning project lifecycle.\
 [Please see this azure official documentation for more information.](https://learn.microsoft.com/en-us/azure/machine-learning/overview-what-is-azure-machine-learning?view=azureml-api-2)
 
 ## Directory Structure:
