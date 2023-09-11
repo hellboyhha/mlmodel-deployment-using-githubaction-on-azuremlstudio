@@ -32,7 +32,7 @@ Azure Machine Learning Studio is a GUI-based integrated development environment 
 ## GitHub Action Setup
 ### Configure Azure Information as Secrets in GitHub Action
 - Secrets for this tutorial.
-- <img title="ML Deployment Secrets" alt="Alt text" src="/secrets-sample.png"> 
+  <img title="ML Deployment Secrets" alt="Alt text" src="/secrets-sample.png"> 
 - [You can learn more about GitHub Action Secrets in this documentation.](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions)
 ### You can change your model endpoint and deployment name in model-deployment-azure.py
 - ```python
