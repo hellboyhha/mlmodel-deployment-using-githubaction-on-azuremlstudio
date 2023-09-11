@@ -35,7 +35,7 @@ Azure Machine Learning Studio is a GUI-based integrated development environment 
   <img title="ML Deployment Secrets" alt="Alt text" src="/secrets-sample.png"> 
 - [You can learn more about GitHub Action Secrets in this documentation.](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions)
 ### You can change your model endpoint and deployment name in model-deployment-azure.py
-- ```python
+  ```python
    ....
    # define an endpoint and deployment name
    endpoint_name = <your endpoint name>
